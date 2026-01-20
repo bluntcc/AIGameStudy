@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steering Behaviors Demo</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Embed critical styles to ensure basic look if CSS fails to load */
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            overflow: hidden;
+            background-color: #222;
+            color: #eee;
+        }
+
+        canvas {
+            display: block;
+        }
+
+        #controls {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .control-group {
+            margin-bottom: 5px;
+        }
+
+        label {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="controls">
+        <h3>Steering Behaviors</h3>
+        <div class="control-group">
+            <label><input type="radio" name="behavior" value="seek" checked> Seek</label>
+        </div>
+        <div class="control-group">
+            <label><input type="radio" name="behavior" value="flee"> Flee</label>
+        </div>
+        <div class="control-group">
+            <label><input type="radio" name="behavior" value="arrive"> Arrive</label>
+        </div>
+        <div class="control-group">
+            <label><input type="radio" name="behavior" value="wander"> Wander</label>
+        </div>
+        <hr>
+        <div class="control-group">
+            <label><input type="checkbox" id="debugParams"> Show Debug Info</label>
+        </div>
+        <small>Move mouse to interact</small>
+        <hr>
+        <div style="margin-top: 10px; text-align: center;">
+            <a href="Article.md" style="color: #4da6ff; text-decoration: none; font-size: 0.9em;">📖 返回文章</a>
+        </div>
+    </div>
+    <canvas id="canvas"></canvas>
+
+    <script src="steering.js"></script>
+    <script>
+        // Main loop and setup logic hook
+        window.addEventListener('load', () => {
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+
+            // Resize canvas to full screen
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            window.addEventListener('resize', resize);
+            resize();
+
+            // Initialize Simulation
+            const demo = new SteeringDemo(canvas);
+
+            // Handle Controls
+            const radios = document.querySelectorAll('input[name="behavior"]');
+            radios.forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    if (e.target.checked) {
+                        demo.setBehavior(e.target.value);
+                    }
+                });
+            });
+
+            document.getElementById('debugParams').addEventListener('change', (e) => {
+                demo.setDebug(e.target.checked);
+            });
+
+            // Animation Loop
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                demo.update();
+                demo.draw(ctx);
+                requestAnimationFrame(animate);
+            }
+            animate();
+        });
+    </script>
+</body>
+
+</html>

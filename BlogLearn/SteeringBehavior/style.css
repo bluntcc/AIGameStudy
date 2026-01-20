@@ -1,0 +1,73 @@
+/* Basic Clean Reset and Dark Theme */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+canvas {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+}
+
+#controls {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: rgba(30, 30, 30, 0.9);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    min-width: 200px;
+    border: 1px solid #444;
+}
+
+h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    color: #4da6ff;
+    text-align: center;
+}
+
+.control-group {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+label {
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    font-size: 0.95rem;
+}
+
+input[type="radio"], input[type="checkbox"] {
+    margin-right: 10px;
+    accent-color: #4da6ff;
+    cursor: pointer;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #555;
+    margin: 15px 0;
+}
+
+small {
+    display: block;
+    margin-top: 10px;
+    color: #888;
+    font-size: 0.8rem;
+    text-align: center;
+}
