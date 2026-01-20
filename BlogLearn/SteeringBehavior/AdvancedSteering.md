@@ -1,6 +1,5 @@
 # 游戏AI进阶：高级操控行为 (Advanced Steering Behaviors)
 
-
 在上一篇文章中，我们介绍了 Seek, Flee, Arrive 和 Wander 等基础操控行为。这些行为虽然能让角色动起来，但它们大多是基于“点”的移动。但在实际游戏中，我们往往需要更复杂的环境交互，比如让角色沿着一条蜿蜒的小径巡逻，或者在充满障碍物的森林中穿梭而不撞树。
 
 本文将介绍两个更高级的操控行为：**路径跟随 (Path Following)** 和 **避障 (Collision Avoidance)**。
@@ -172,4 +171,6 @@ avoid(obstacles) {
 
 将这些力（Seek, Arrive, Separate, Follow, Avoid）根据权重累加起来 `acceleration.add(force * weight)`，一个栩栩如生的智能体就诞生了。
 
-reference:https://edirlei.com/aulas/game-ai-2020/GAME_AI_Lecture_07_Steering_Behaviours_2020.html 
+---
+
+**Reference:** [Game AI - Steering Behaviours](https://edirlei.com/aulas/game-ai-2020/GAME_AI_Lecture_07_Steering_Behaviours_2020.html)
