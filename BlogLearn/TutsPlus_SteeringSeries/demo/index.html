@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steering Behaviors Demo</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: #222;
+            color: #eee;
+            font-family: sans-serif;
+        }
+
+        canvas {
+            display: block;
+        }
+
+        #controls {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        select,
+        button {
+            background: #444;
+            color: #fff;
+            border: 1px solid #666;
+            padding: 5px;
+            margin-bottom: 5px;
+            width: 100%;
+        }
+
+        .instruction {
+            font-size: 12px;
+            color: #aaa;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="controls">
+        <label>Behavior:</label>
+        <select id="behaviorSelect">
+            <option value="seek">Seek</option>
+            <option value="flee">Flee</option>
+            <option value="arrive">Arrival</option>
+            <option value="wander">Wander</option>
+            <option value="pursuit">Pursuit</option>
+            <option value="evade">Evade</option>
+            <option value="collision">Collision Avoidance</option>
+            <option value="path">Path Following</option>
+            <option value="leader">Leader Following</option>
+            <option value="queue">Queue</option>
+        </select>
+        <div id="debugInfo" class="instruction">
+            Click to set Target<br>
+            Space to toggle Debug Lines
+        </div>
+    </div>
+    <canvas id="gameCanvas"></canvas>
+
+    <script src="vector.js"></script>
+    <script src="steering.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
